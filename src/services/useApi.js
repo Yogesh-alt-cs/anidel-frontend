@@ -2,17 +2,11 @@ import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import config from "../config/config";
 
-export const API_BASE_URL =
-  import.meta.env.VITE_APP_MODE &&
-  import.meta.env.VITE_APP_MODE === "development"
-    ? config.localUrl
-    : config.serverUrl;
+export const API_BASE_URL = config.baseurl;
 
 const fetchData = async (url) => {
-  console.log(API_BASE_URL);
   try {
     const { data } = await axios.get(API_BASE_URL + url);
-
     return data;
   } catch (error) {
     throw new Error(error);
@@ -31,12 +25,15 @@ export const useApi = (endpoint) => {
 
 const fetchInfiniteData = async ({ queryKey, pageParam }) => {
   try {
-    const { data } = await axios.get(API_BASE_URL + queryKey + pageParam);
+    const { data } = await axios.get(
+      API_BASE_URL + queryKey[0] + pageParam
+    );
     return data;
   } catch (error) {
     throw new Error(error);
   }
 };
+
 export const useInfiniteApi = (endpoint) => {
   return useInfiniteQuery({
     queryKey: [endpoint],
