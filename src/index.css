@@ -1,0 +1,366 @@
+@import "./variables.css";
+
+:root {
+  font-family: "Poppins", "Inter", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-hover), var(--glow-primary);
+}
+
+.active-glow {
+  box-shadow: var(--glow-primary);
+}
+
+
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: var(--glow-primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--text-muted);
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease-out;
+}
+
+.btn-secondary:hover {
+  color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-icon {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  transition: all 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  color: var(--primary-hover);
+  box-shadow: var(--glow-primary);
+}
+
+.btn-icon:active {
+  color: var(--primary);
+  transform: scale(0.95);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: "Poppins", "Inter", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.active {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  inset: 0;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+/* Global Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  background-color: var(--surface-level-1);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease-out;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--primary-hover);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Checkboxes & Radios */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  background-color: var(--surface-level-1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+input[type="radio"]:checked::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Micro-Interactions */
+button,
+a,
+.btn-primary,
+.btn-secondary,
+.btn-icon,
+.card-interactive {
+  touch-action: manipulation;
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.btn-icon:active,
+button:active {
+  transform: scale(0.97);
+  transition: transform 0.075s ease-out;
+}
+
+.input {
+  border-radius: 15px 0 0 15px;
+}
+
+.btn {
+  border-radius: 0 15px 15px 0;
+}
+
+.flw-item {
+  width: calc(16.66% - 0.5rem);
+  margin: 0.7rem 0;
+  position: relative;
+}
+
+.gradient-text {
+  font-weight: 800;
+  background: linear-gradient(90deg,
+      #fff,
+      var(--primary));
+  /* Gradient colors */
+  -webkit-background-clip: text;
+  /* Clips the gradient to the text */
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Makes the text transparent */
+  text-align: center;
+}
+
+.active {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  background-color: #222831b4;
+  z-index: 5000;
+}
+
+.bg-active {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  scrollbar-width: none;
+}
+
+.cover-wrapper {
+  position: absolute;
+  height: 50%;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  transform: scale(1.2);
+  opacity: 0.2;
+}
+
+.logo h1 {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1023px) {
+  .flw-item {
+    width: calc(25% - 0.5rem) !important;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .flw-item {
+    width: calc(25% - 0.5rem) !important;
+  }
+}
+
+@media screen and (max-width: 759px) {
+  .flw-item {
+    width: calc(33.33% - 0.5rem) !important;
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .flw-item {
+    width: calc(50% - 0.5rem) !important;
+  }
+
+  .posterImg {
+    width: 60%;
+  }
+}
+
+.opacity-overlay {
+  height: 250px;
+  width: 100%;
+  background: linear-gradient(to bottom,
+      rgba(4, 21, 45, 0) 0%,
+      var(--background) 79.17%);
+  position: absolute;
+  bottom: 0;
+}
+
+.rounded-child>p:first-child {
+  border-radius: 2px 0 0 2px;
+}
+
+.rounded-child>p:last-child {
+  border-radius: 0 2px 2px 0;
+}
+
+.lightBorder {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+}
+
+.gray {
+  color: var(--text-primary);
+  opacity: 0.5;
+}
