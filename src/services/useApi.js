@@ -9,7 +9,7 @@ const fetchData = async (url) => {
     const { data } = await axios.get(API_BASE_URL + url);
     return data;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 
@@ -26,11 +26,11 @@ export const useApi = (endpoint) => {
 const fetchInfiniteData = async ({ queryKey, pageParam }) => {
   try {
     const { data } = await axios.get(
-      API_BASE_URL + queryKey[0] + pageParam
+      API_BASE_URL + queryKey[0] + "?page=" + pageParam
     );
     return data;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 
@@ -41,7 +41,7 @@ export const useInfiniteApi = (endpoint) => {
     initialPageParam: 1,
     retry: 0,
     getNextPageParam: (lastpage) => {
-      if (lastpage.data.pageInfo.hasNextPage) {
+      if (lastpage?.data?.pageInfo?.hasNextPage) {
         return lastpage.data.pageInfo.currentPage + 1;
       } else {
         return undefined;
